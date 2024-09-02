@@ -3,4 +3,4 @@
 # Linguagem
   A rotina é desenvolvida para Matlab. Ja estou desenvolvendo uma para Python (Colaboratory), caso não esteja aqui eu esqueci de colocar eu ainda não terminei hehe (mas vou terminar).
 # Colaboração
-  Caso você encontre algum problema fique a vontade para relatar em issues.
+  Caso você encontre algum problema fique a vontade para relatar.
