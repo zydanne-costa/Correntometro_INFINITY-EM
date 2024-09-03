@@ -10,7 +10,7 @@
 % realiza a importacao, manipulacao e plotagem dos dados de forma detalhada 
 % e visualmente clara.
 %--------------------------------------------------------------------------
-% Ultima Modificacao: 02 de setembro de 2024
+clear all; clc;
 %==========================================================================
 
 %% Carregando os dados
@@ -66,11 +66,11 @@ plot(dt, vel_u, 'k', 'LineWidth', 1.1); % Plota a variavel vel_u ao longo do tem
 % Adiciona o rotulo do eixo y
 ylabel('Velocidade (cm/s)', 'FontName', 'Times New Roman', 'FontSize', 14); % Define o texto e o formato do rotulo do eixo y
 
-% Define os limites do eixo y
-ylim([-5 70]); % Define o intervalo dos valores do eixo y
+% Define os limites do eixo y, se necessario
+% ylim([-5 70]); % Define o intervalo dos valores do eixo y
 
 % Adiciona o titulo ao grafico
-title('Velocidade x Direção da Corrente P1', 'FontName', 'Times New Roman', 'FontSize', 18); % Define o titulo e o formato
+title('Velocidade x Direção da Corrente', 'FontName', 'Times New Roman', 'FontSize', 18); % Define o titulo e o formato
 
 % Formata o eixo x para exibir as datas
 datetick('x', 'dd/mm/yy HH:MM', 'keepticks'); % Ajusta o formato do eixo x para datas e horas, mantendo os ticks existentes
@@ -90,8 +90,8 @@ plot(dt, dir, 'k*', 'MarkerSize', 4); % Plota a variável dir ao longo do tempo 
 % Adiciona o rotulo do eixo y
 ylabel('Direção (graus)', 'FontName', 'Times New Roman', 'FontSize', 18); % Define o texto e o formato do rotulo do eixo y
 
-% Define os limites do eixo y
-ylim([-1 361]); % Define o intervalo dos valores do eixo y
+% Define os limites do eixo y, se necessario
+% ylim([-1 361]); % Define o intervalo dos valores do eixo y
 
 % Adiciona o rotulo do eixo x
 xlabel('Tempo (dia/mês/ano hora:minuto)', 'FontName', 'Times New Roman', 'FontSize', 18); % Define o texto e o formato do rotulo do eixo x
@@ -106,6 +106,6 @@ set(gca, 'FontName', 'Times New Roman', 'FontSize', 12); % Define a fonte e o ta
 grid minor; % Adiciona linhas de grade menores para melhor visualizacao
 
 % Salva a figura como um arquivo BMP
-saveas(fig, 'vel_dir.png', 'png'); % Salva a figura com o nome 'vel_dir.bmp' no formato BMP
+saveas(fig, 'vel_dir.png', 'png'); % Salva a figura com o nome 'vel_dir.bmp' no formato PNG
 
 %% FIM DO SCRIPT
