@@ -15,7 +15,7 @@ clear all; clc;
 
 %% Carregando os dados
 % Definindo o caminho da pasta com os dados brutos
-path = ('C:\Users\Lapmar\Documents\Zydanne\Diag_dos_Lagos\Correntometro\Ponto_08.csv');
+path = ('C:\SEU\CAMINHO\AQUI\NomedoArquivo.csv');
 
 % Carregar dados ignorando as 75 primeiras linhas de cabecalho
 % Usa-se 'HeaderLines' para ignorar as linhas do cabecalho
@@ -41,17 +41,13 @@ data = data(:, [3, 4, 1, 2]);  % Move as colunas 3 e 4 para as primeiras posicoe
 % Definindo e manipulando velocidade
 vel = data{:,3}/100; % a divisao por 100 transforma cm/s para m/s
 % quando utiliza-se '{ }' os dados mudam de tabela para array (numero)
-for i = 1:length(vel)
-    if vel(i) >= 0.08 
-        vel(i) = NaN;
-    end
-end 
+
 % Definindo e manipulando direcao
 dir = data{:,4};
 
 % Decomposicao vetorial
-dm = -20.16; % declinacao magnetica do local 
-alfa = 0; % grau de rotacao do canal, varia de acordo com seu ponto de coleta (fiz no google earth) | para agua parada agua = 0
+dm = __; % declinacao magnetica do local 
+alfa = __; % grau de rotacao do canal, varia de acordo com seu ponto de coleta (fiz no google earth) | para agua parada agua = 0
 teta = 90-(dir+dm)+alfa; % definindo o angulo teta pra componente u
 m =(teta*pi)/180; % Transformando graus para radianos 
 vel_u = vel.*cos(m); % decomposiÃ§Ã£o do vetor
@@ -68,7 +64,7 @@ set(fig, 'Position', [100, 70, 900, 600]); % Define a posicao e o tamanho da fig
 subplot(2,3,[1 2]) % Divide a area de plotagem em uma matriz de 2x3 e seleciona o grafico na posicao entre 1 e 2
 
 % Plotagem da componente u da velocidade
-plot(dt, vel, 'k', 'LineWidth', 1.07); % Plota a variavel vel_u ao longo do tempo dt em preto ('k') com largura de linha de 1.1
+plot(dt, vel, 'k', 'LineWidth', 1.1); % Plota a variavel vel_u ao longo do tempo dt em preto ('k') com largura de linha de 1.1
 
 % Adiciona o rotulo do eixo y
 ylabel('Velocidade (m/s)', 'FontName', 'Times New Roman', 'FontSize', 14); % Define o texto e o formato do rotulo do eixo y
@@ -80,7 +76,7 @@ ylim([0 0.1]); % Define o intervalo dos valores do eixo y
 xlim([min(dt) max(dt)]); % Define o intervalo dos valores do eixo x
 
 % Adiciona o titulo ao grafico
-title('Velocidade x Direção da Corrente Ponto 08', 'FontName', 'Times New Roman', 'FontSize', 18); % Define o titulo e o formato
+title('Velocidade x Direção da Corrente', 'FontName', 'Times New Roman', 'FontSize', 18); % Define o titulo e o formato
 
 % Formata o eixo x para exibir as datas
 datetick('x', 'dd/mm/yy HH:MM', 'keepticks'); % Ajusta o formato do eixo x para datas e horas, mantendo os ticks existentes
@@ -124,6 +120,6 @@ compass(vel_u,vel_v,'k')
 view(90,-90)
 
 % Salva a figura como um arquivo PNG
-saveas(fig, 'vel_dir_p08.png', 'png'); % Salva a figura com o nome 'vel_dir.bmp' no formato PNG
+saveas(fig, 'vel_dir.png', 'png'); % Salva a figura com o nome 'vel_dir.bmp' no formato PNG
 
 %% FIM DO SCRIPT
